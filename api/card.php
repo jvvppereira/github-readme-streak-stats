@@ -873,7 +873,7 @@ function renderOutput(string|array $output, int $responseCode = 200): void
     $response = generateOutput($output, null, $responseCode);
     // Always return HTTP 200 for SVG/PNG so GitHub's image proxy (Camo) displays error cards
     // instead of broken images. The original error code is included in JSON responses.
-    // http_response_code(200);
-    // header("Content-Type: {$response["contentType"]}");
+    http_response_code(200);
+    header("Content-Type: {$response["contentType"]}");
     exit($response["body"]);
 }
